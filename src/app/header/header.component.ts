@@ -47,26 +47,10 @@ export class HeaderComponent implements OnInit {
   }
 
   randomSequence(){
-    let tmp=this.shuffle(SharedService.questions)
+    let tmp=SharedService.shuffle(SharedService.questions)
     this.reset();  
     SharedService.questions=tmp;
   }
-
-  shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  while (0 !== currentIndex) {
-
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
 
   questions() {
     return SharedService.questions;
