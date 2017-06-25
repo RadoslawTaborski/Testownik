@@ -8,7 +8,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}</a>
-      <a class="navbar-brand" *ngIf="questions().length==0" href="#">{{appName}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==false" href="#">{{appName}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==true" href="#">{{appName}} -----Błędna baza-----</a>
     </div>
     <div class="navbar-header">
 

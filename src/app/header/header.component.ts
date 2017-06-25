@@ -16,12 +16,14 @@ export class HeaderComponent implements OnInit {
   counter: number=0;
   fileName: string="Wybierz bazę"
   baseIsRead: boolean=false;
+  err:boolean=false;
 
 	constructor() {
 		console.log("MyComp.constructor");
   }
 
    fileChanged($event):void {
+    this.err=false;
     this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
@@ -31,11 +33,20 @@ export class HeaderComponent implements OnInit {
 		  var fileReader = new FileReader();
 
       fileReader.onloadend= function(e){
-        SharedService.questions.push(new Question(this.result, self.counter));
-        self.counter++;
+        if(<string>this.result.charAt(0)=='X'){
+          SharedService.questions.push(new Question(this.result, self.counter));
+          self.counter++;
+        }else{
+            console.log("Błędna baza")
+            self.err=true;
+        }
+      }
+      if(self.err){
+        break;
       }
       fileReader.readAsText(file, 'windows-1250');
-      this.baseIsRead=true;
+      if(SharedService.questions.length!=0)
+        this.baseIsRead=true;
     }
   }
 
