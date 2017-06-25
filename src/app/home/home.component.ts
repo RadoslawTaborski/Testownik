@@ -23,7 +23,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   check(quest: any){
     let first=true;
     SharedService.allCounter++;
-    let q=SharedService.questions[quest];
+    let q:Question;
+    for(let item of SharedService.questions){
+      if(item.index==quest){
+        q=item;
+      }
+    }
+
     q.result=1;
     SharedService.goodCounter++;
 

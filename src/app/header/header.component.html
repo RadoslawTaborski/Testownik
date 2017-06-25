@@ -10,32 +10,20 @@
       <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}</a>
       <a class="navbar-brand" *ngIf="questions().length==0" href="#">{{appName}}</a>
     </div>
-    <div class="navbar-header" >
-      
-    </div>  
+    <div class="navbar-header">
+
+    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li style="padding-top: 0.5em" *ngIf="baseIsRead==true">
+          <button class="btn btn-primary" (click)="randomSequence()"> Losowa kolejność</button>
+        </li>
         <li style="padding-top: 0.5em">
-        <label class="btn btn-primary" > {{fileName}}
-          <input class="btn btn-default" style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
-        </label>
-      </li>
+          <label class="btn btn-primary"> {{fileName}}
+            <input class="btn btn-default" style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
+          </label>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

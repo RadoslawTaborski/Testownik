@@ -15,16 +15,14 @@ export class HeaderComponent implements OnInit {
 	isFileReaderWork: boolean = false;
   counter: number=0;
   fileName: string="Wybierz bazę"
+  baseIsRead: boolean=false;
 
 	constructor() {
 		console.log("MyComp.constructor");
   }
 
    fileChanged($event):void {
-    SharedService.questions=[];
-    SharedService.allCounter=0;
-    SharedService.goodCounter=0;
-    this.counter=0
+    this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
     let self=this;
@@ -37,8 +35,38 @@ export class HeaderComponent implements OnInit {
         self.counter++;
       }
       fileReader.readAsText(file, 'windows-1250');
+      this.baseIsRead=true;
     }
   }
+
+  reset(){
+    SharedService.questions=[];
+    SharedService.allCounter=0;
+    SharedService.goodCounter=0;
+    this.counter=0;
+  }
+
+  randomSequence(){
+    let tmp=this.shuffle(SharedService.questions)
+    this.reset();  
+    SharedService.questions=tmp;
+  }
+
+  shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
   questions() {
     return SharedService.questions;
