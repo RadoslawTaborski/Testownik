@@ -1,0 +1,19 @@
+.navBg{
+    background: rgba(255, 255, 255, 0.85);
+    
+}
+
+.navBg > div > div > a,
+.navBg > div > div > ul > li > a {
+    color: #333333;
+}
+
+a, label{
+    cursor: pointer;
+    text-decoration-line: none !important;
+    text-decoration: none !important;
+}
+
+a > label{
+    font-weight: bolder;
+}

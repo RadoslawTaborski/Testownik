@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" [class.navBg]='bgNavbar' (window:scroll)="onScroll($event)">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -10,13 +10,11 @@
       <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}</a>
       <a class="navbar-brand" *ngIf="questions().length==0" href="#">{{appName}}</a>
     </div>
-    <div class="navbar-header">
 
-    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-         <a> <label > <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
+          <a> <label> <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
           <input  style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
         </label> </a>
         </li>
