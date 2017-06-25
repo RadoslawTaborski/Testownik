@@ -17,55 +17,30 @@
     <h1><i class="fa fa-spinner fa-spin"></i></h1>
 </div>
 <p></p>
-<div class="list-group container" *ngIf="isLoaded ==true ">
+<div class="list-group container" *ngIf="isLoaded ==true && questions().length != 0">
+
+    <div class="container" style="margin-top: -30px;">
+        <div class="col-md-4"><i class="fa fa-database fa-2x" aria-hidden="true"></i> Ilość Pytań w Bazie</div>
+        <div class="col-md-4" style="text-align: center"><i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> Poprawne / Złe odp</div>
+        <div class="col-md-4" style="text-align: right"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> Czas od początku</div>
+    </div>
+
+    <hr>
+
     <div class="panel panel-primary" *ngFor="let question of questions();">
         <div class="panel-heading">
             <h4 class="panel-title">{{question.question}}</h4>
         </div>
-        <div *ngIf="question.result==2" class="panel-body">
+        <div class="panel-body" [class.alert-danger]="question.result==0" [class.alert-success]="question.result==1">
             <div id="{{question.index}}" *ngFor="let answer of question.answers;">
                 <div class="checkbox">
-                    <label *ngIf="answer.state==0">
-                <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <h3 class="answer">{{answer.answer}}</h3>
-            </label>
-                    <label *ngIf="answer.state==1" class="label-success">
+                    <label [class.label-success]="answer.state==1">
                 <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
                 <h3 class="answer">{{answer.answer}}</h3>
             </label>
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="check(question.index)">Sprawdź</button>
-        </div>
-        <div *ngIf="question.result==0" class="panel-body alert-danger">
-            <div id="{{question.index}}" *ngFor="let answer of question.answers;">
-                <div class="checkbox">
-                    <label *ngIf="answer.state==0">
-                <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
-            </label>
-                    <label *ngIf="answer.state==1" class="label-success">
-                <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
-            </label>
-                </div>
-            </div>
-            <button class="btn btn-primary" (click)="check(question.index)">Sprawdź</button>
-        </div>
-        <div *ngIf="question.result==1" class="panel-body alert-success">
-            <div id="{{question.index}}" *ngFor="let answer of question.answers;">
-                <div class="checkbox">
-                    <label *ngIf="answer.state==0">
-                <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
-            </label>
-                    <label *ngIf="answer.state==1" class="label-success">
-                <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
-            </label>
-                </div>
-            </div>
-            <button class="btn btn-primary" (click)="check(question.index)">Sprawdź</button>
+            <button class="btn btn-primary" (click)="check(question.index)">Sprawdź <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
         </div>
     </div>
 </div>

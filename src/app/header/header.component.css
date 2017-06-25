@@ -1,6 +1,9 @@
 .navBg{
     background: rgba(255, 255, 255, 0.85);
-    
+}
+
+.navbar{
+    transition: .5s;
 }
 
 .navBg > div > div > a,
