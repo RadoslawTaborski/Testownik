@@ -9,6 +9,8 @@ import { SharedService } from "../shared.service";
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   isLoaded = false;
+  history:number[]=[];
+
   constructor() { }
 
   ngOnInit() {
@@ -20,7 +22,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return SharedService.questions
   }
 
-  check(quest: any) {
+  check(quest: number) {
+    let itWas=false;
+    for(let item of this.history){
+      if(item==quest)
+        itWas=true;
+    }
+    if(!itWas){
+    this.history.push(quest);
     let first = true;
     SharedService.allCounter++;
     let q: Question;
@@ -42,6 +51,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         q.result = 0;
         first = false;
       }
+    }
     }
   }
 
