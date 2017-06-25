@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
 	isFileReaderWork: boolean = false;
   counter: number=0;
   fileName: string="Wybierz bazę"
-  baseIsRead: boolean=false;
   err:boolean=false;
 
 	constructor() {
@@ -45,8 +44,6 @@ export class HeaderComponent implements OnInit {
         break;
       }
       fileReader.readAsText(file, 'windows-1250');
-      if(SharedService.questions.length!=0)
-        this.baseIsRead=true;
     }
   }
 
