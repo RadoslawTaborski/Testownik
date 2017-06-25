@@ -9,6 +9,11 @@ import { SharedService } from "../shared.service";
 })
 export class HeaderComponent implements OnInit {
 
+  private lastScroll = 0;
+  private isScrollingDown = false;
+  private hideNavbar = false;
+  private bgNavbar = false;
+
   appName = "Testownik";
 
   files: any = null;
@@ -17,19 +22,21 @@ export class HeaderComponent implements OnInit {
   fileName: string="Wybierz bazę"
   err:boolean=false;
 
-	constructor() {
-		console.log("MyComp.constructor");
+
+  constructor() {
+    console.log("MyComp.constructor");
   }
+
 
    fileChanged($event):void {
     this.err=false;
     this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
-    let self=this;
-    for(let file of this.files){
+    let self = this;
+    for (let file of this.files) {
 
-		  var fileReader = new FileReader();
+      var fileReader = new FileReader();
 
       fileReader.onloadend= function(e){
         if(<string>this.result.charAt(0)=='X'){
@@ -73,6 +80,22 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  shoulHideNavbar() {
+    if (this.lastScroll > 40 && this.isScrollingDown)
+      this.hideNavbar = true;
+    else
+      this.hideNavbar = false;
+  }
+
+  onScroll($event) {
+    var scroll = window.scrollY;
+    this.isScrollingDown = scroll > this.lastScroll ? true : false;
+    this.lastScroll = scroll;
+    this.shoulHideNavbar();
+
+    scroll > 80 ? this.bgNavbar = true : this.bgNavbar = false;
   }
 
 }
