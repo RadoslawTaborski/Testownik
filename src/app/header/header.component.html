@@ -1,5 +1,5 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -10,32 +10,35 @@
       <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}</a>
       <a class="navbar-brand" *ngIf="questions().length==0" href="#">{{appName}}</a>
     </div>
-    <div class="navbar-header" >
-      
-    </div>  
+    <div class="navbar-header">
+
+    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li style="padding-top: 0.5em">
-        <label class="btn btn-primary" > {{fileName}}
-          <input class="btn btn-default" style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
-        </label>
-      </li>
+        <li>
+         <a> <label > <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
+          <input  style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
+        </label> </a>
+        </li>
+        <li>
+          <a href="contact.html">Kontakt</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<header class="intro-header" style="background-image: url('../../assets/img/home-bg2.jpg'); margin-top: -60px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Testownik</h1>
+          <hr class="small">
+          <span class="subheading">Ostatnia nadzieja na zaliczenie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
