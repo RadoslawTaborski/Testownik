@@ -21,16 +21,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   check(quest: any){
-    console.log("check!"+ quest);
-    let body=(<HTMLInputElement>document.getElementById(quest))
+    let first=true;
+    SharedService.allCounter++;
     let q=SharedService.questions[quest];
     q.result=1;
+    SharedService.goodCounter++;
+
     for(let item of q.answers){
       if(item.value==true){
         item.state=1;
       }
-      if(item.checked!=item.value){
+      if(item.checked!=item.value && first){
+        SharedService.goodCounter--;
         q.result=0;
+        first=false;
       }
     }
   }

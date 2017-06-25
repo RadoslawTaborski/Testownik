@@ -16,6 +16,9 @@
           <input class="btn btn-default" style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
         </label>
       </ul>
+      <label class="label label-default" *ngIf="questions().length!=0">
+          {{goodCounter()}}/{{allCounter()}}
+      </label>
     </div>
     <!--/.nav-collapse -->
   </div>

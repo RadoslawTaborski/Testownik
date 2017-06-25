@@ -38,6 +38,18 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  questions() {
+    return SharedService.questions;
+  }
+
+  allCounter() {
+    return SharedService.allCounter;
+  }
+
+  goodCounter() {
+    return SharedService.goodCounter;
+  }
+
   ngOnInit() {
   }
 
