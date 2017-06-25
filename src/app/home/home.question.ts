@@ -11,6 +11,7 @@ export class Question {
         this.question=lines[1];
         this.index=num;
         for(let i=2; i<lines.length;++i) {
+            if(lines[i].length>1)
             this.answers.push(new Answer(lines[i],lines[0].charAt(i-1)=='1'));
         }
         this.answers=SharedService.shuffle(this.answers);
