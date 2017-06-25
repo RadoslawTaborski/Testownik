@@ -21,3 +21,15 @@ input[type=checkbox]
 .answer:hover{
     color: #0085a1;
 }
+
+button{
+    font-weight: normal;
+}
+
+.panel:hover{
+    box-shadow: 0 0 20px #0085a1;
+}
+
+.panel{
+    transition: .2s;
+}
