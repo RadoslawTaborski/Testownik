@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   files: any = null;
 	isFileReaderWork: boolean = false;
   counter: number=0;
+  fileName: string="Wybierz bazę"
 
 	constructor() {
 		console.log("MyComp.constructor");
