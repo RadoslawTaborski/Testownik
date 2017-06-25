@@ -8,11 +8,17 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}</a>
-      <a class="navbar-brand" *ngIf="questions().length==0" href="#">{{appName}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==false" href="#">{{appName}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==true" href="#">{{appName}} -----Błędna baza-----</a>
     </div>
+    <div class="navbar-header">
 
+    </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li style="padding-top: 0.5em" *ngIf="questions().length!=0">
+          <button class="btn btn-primary" (click)="randomSequence()">Losowa kolejność</button>
+        </li>
         <li>
           <a> <label> <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
           <input  style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
@@ -24,8 +30,6 @@
       </ul>
     </div>
   </div>
-</nav>
-
 
 <header class="intro-header" style="background-image: url('../../assets/img/home-bg2.jpg'); margin-top: -60px">
   <div class="container">
@@ -40,3 +44,5 @@
     </div>
   </div>
 </header>
+
+
