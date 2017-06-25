@@ -14,6 +14,6 @@ a, label{
     text-decoration: none !important;
 }
 
-a > label{
+a, label{
     font-weight: bolder;
 }
