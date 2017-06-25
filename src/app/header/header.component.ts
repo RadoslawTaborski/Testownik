@@ -61,10 +61,22 @@ export class HeaderComponent implements OnInit {
     this.counter=0;
   }
 
+  resetQuestions(){
+    for(let item of SharedService.questions){
+      item.result=2;
+      for(let ans of item.answers){
+        ans.checked=false;
+        ans.state=0;
+      }
+    }
+  }
+
   randomSequence(){
     let tmp=SharedService.shuffle(SharedService.questions)
     this.reset();  
     SharedService.questions=tmp;
+    this.resetQuestions();
+    window.scrollTo(0, 0);
   }
 
   questions() {
