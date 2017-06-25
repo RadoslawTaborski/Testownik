@@ -1,8 +1,23 @@
+<header class="intro-header" style="background-image: url('../../../assets/img/home-bg2.jpg'); margin-top: -60px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Testownik</h1>
+                    <hr class="small">
+                    <span class="subheading">Ostatnia nadzieja na zaliczenie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
 <div *ngIf="isLoaded == false" style="text-align: center; padding-top: 5em">
     <h1><i class="fa fa-spinner fa-spin"></i></h1>
 </div>
 <p></p>
-<div class="list-group" *ngIf="isLoaded ==true ">
+<div class="list-group container" *ngIf="isLoaded ==true ">
     <div class="panel panel-primary" *ngFor="let question of questions();">
         <div class="panel-heading">
             <h4 class="panel-title">{{question.question}}</h4>
@@ -12,11 +27,11 @@
                 <div class="checkbox">
                     <label *ngIf="answer.state==0">
                 <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
+                <h3 class="answer">{{answer.answer}}</h3>
             </label>
                     <label *ngIf="answer.state==1" class="label-success">
                 <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
-                <p class="answer">{{answer.answer}}</p>
+                <h3 class="answer">{{answer.answer}}</h3>
             </label>
                 </div>
             </div>
