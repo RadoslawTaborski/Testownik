@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
   appName = "Testownik";
 
   files: any = null;
-	isFileReaderWork: boolean = false;
-  counter: number=0;
-  fileName: string="Wybierz bazę"
-  err:boolean=false;
+  isFileReaderWork: boolean = false;
+  counter: number = 0;
+  fileName: string = "Wybierz bazę"
+  err: boolean = false;
 
 
   constructor() {
@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit {
   }
 
 
-   fileChanged($event):void {
-    this.err=false;
+  fileChanged($event): void {
+    this.err = false;
     this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
@@ -38,43 +38,43 @@ export class HeaderComponent implements OnInit {
 
       var fileReader = new FileReader();
 
-      fileReader.onloadend= function(e){
-        if(<string>this.result.charAt(0)=='X'){
+      fileReader.onloadend = function (e) {
+        if (<string>this.result.charAt(0) == 'X') {
           SharedService.questions.push(new Question(this.result, self.counter));
           self.counter++;
-        }else{
-            console.log("Błędna baza")
-            self.err=true;
+        } else {
+          console.log("Błędna baza")
+          self.err = true;
         }
       }
-      if(self.err){
+      if (self.err) {
         break;
       }
       fileReader.readAsText(file, 'windows-1250');
     }
   }
 
-  reset(){
-    SharedService.questions=[];
-    SharedService.allCounter=0;
-    SharedService.goodCounter=0;
-    this.counter=0;
+  reset() {
+    SharedService.questions = [];
+    SharedService.allCounter = 0;
+    SharedService.goodCounter = 0;
+    this.counter = 0;
   }
 
-  resetQuestions(){
-    for(let item of SharedService.questions){
-      item.result=2;
-      for(let ans of item.answers){
-        ans.checked=false;
-        ans.state=0;
+  resetQuestions() {
+    for (let item of SharedService.questions) {
+      item.result = 2;
+      for (let ans of item.answers) {
+        ans.checked = false;
+        ans.state = 0;
       }
     }
   }
 
-  randomSequence(){
-    let tmp=SharedService.shuffle(SharedService.questions)
-    this.reset();  
-    SharedService.questions=tmp;
+  randomSequence() {
+    let tmp = SharedService.shuffle(SharedService.questions)
+    this.reset();
+    SharedService.questions = tmp;
     this.resetQuestions();
     window.scrollTo(0, 0);
   }

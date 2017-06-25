@@ -8,45 +8,45 @@ import { SharedService } from "../shared.service";
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  isLoaded=false;
-	constructor() {  }
+  isLoaded = false;
+  constructor() { }
 
   ngOnInit() {
-    if(SharedService != null)
-      this.isLoaded=true;
+    if (SharedService != null)
+      this.isLoaded = true;
   }
 
   questions() {
     return SharedService.questions
   }
 
-  check(quest: any){
-    let first=true;
+  check(quest: any) {
+    let first = true;
     SharedService.allCounter++;
-    let q:Question;
-    for(let item of SharedService.questions){
-      if(item.index==quest){
-        q=item;
+    let q: Question;
+    for (let item of SharedService.questions) {
+      if (item.index == quest) {
+        q = item;
       }
     }
 
-    q.result=1;
+    q.result = 1;
     SharedService.goodCounter++;
 
-    for(let item of q.answers){
-      if(item.value==true){
-        item.state=1;
+    for (let item of q.answers) {
+      if (item.value == true) {
+        item.state = 1;
       }
-      if(item.checked!=item.value && first){
+      if (item.checked != item.value && first) {
         SharedService.goodCounter--;
-        q.result=0;
-        first=false;
+        q.result = 0;
+        first = false;
       }
     }
   }
 
   ngAfterViewInit() {
-    
+
   }
 
 }
