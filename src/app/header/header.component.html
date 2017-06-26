@@ -16,31 +16,21 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="questions().length!=0">
+        <li *ngIf="questions().length!=0 && homeControler">
           <a (click)="randomSequence()"><i class="fa fa-refresh" aria-hidden="true"></i> Losowa kolejność</a>
         </li>
-        <li>
+        <li *ngIf="homeControler == true">
           <a> <label> <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
           <input  style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
         </label> </a>
         </li>
+        <li *ngIf="homeControler == false">
+          <a routerLink="/home">Home</a>
+        </li>
         <li>
-          <a href="contact.html">Kontakt</a>
+          <a routerLink="/contact">Kontakt</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<header class="intro-header" style="background-image: url('../../assets/img/home-bg2.jpg'); margin-top: -60px">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="site-heading">
-          <h1>Testownik</h1>
-          <hr class="small">
-          <span class="subheading">Ostatnia nadzieja na zaliczenie</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>

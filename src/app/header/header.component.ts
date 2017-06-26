@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../home/home.question';
 import { SharedService } from "../shared.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   private isScrollingDown = false;
   private hideNavbar = false;
   private bgNavbar = false;
+  private homeControler = false;
 
   appName = "Testownik";
 
@@ -22,10 +24,19 @@ export class HeaderComponent implements OnInit {
   fileName: string = "Wybierz bazę"
   err: boolean = false;
 
-  constructor() {
+  constructor(private router: Router) {
     console.log("MyComp.constructor");
+    router.events.subscribe((val) => {
+      this.navStyle(val["url"]);
+    });
   }
 
+  navStyle(url) {
+    if (url == '/home')
+      this.homeControler = true;
+    else
+      this.homeControler = false;
+  }
 
   fileChanged($event): void {
     this.err = false;
