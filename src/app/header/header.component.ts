@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   files: any = null;
   isFileReaderWork: boolean = false;
   counter: number = 0;
-  fileName: string = "Wybierz bazę"
+  fileName: string = "Wybierz pliki"
   err: boolean = false;
 
   constructor(private router: Router) {

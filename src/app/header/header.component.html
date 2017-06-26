@@ -21,7 +21,7 @@
         </li>
         <li *ngIf="homeControler == true">
           <a> <label> <i class="fa fa-upload" aria-hidden="true"></i> {{fileName}}
-          <input  style="display: none;" id="file" type="file"  webkitdirectory directory (change)="fileChanged($event)">
+          <input  style="display: none;" id="file" type="file" multiple="multiple" (change)="fileChanged($event)">
         </label> </a>
         </li>
         <li *ngIf="homeControler == false">
