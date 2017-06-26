@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   fileName: string = "Wybierz bazę"
   err: boolean = false;
 
-
   constructor() {
     console.log("MyComp.constructor");
   }
@@ -30,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
   fileChanged($event): void {
     this.err = false;
+    this.clock();
     this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
@@ -58,6 +58,8 @@ export class HeaderComponent implements OnInit {
     SharedService.questions = [];
     SharedService.allCounter = 0;
     SharedService.goodCounter = 0;
+    SharedService.clock = 0;
+    SharedService.clockText="";
     this.counter = 0;
   }
 
@@ -89,6 +91,23 @@ export class HeaderComponent implements OnInit {
 
   goodCounter() {
     return SharedService.goodCounter;
+  }
+
+  clockText() {
+    return SharedService.clockText;
+  }
+
+  private counterClock() {
+    let tmp=SharedService.clock++;
+    let minutes= Math.floor(tmp/60);
+    var formattedNumber1 = ("0" + minutes).slice(-2);
+    let seconds= tmp-minutes*60;
+    var formattedNumber2 = ("0" + seconds).slice(-2);
+    SharedService.clockText=formattedNumber1+":"+formattedNumber2;
+  }
+
+  clock() {
+    setInterval(() => this.counterClock(), 1000);
   }
 
   ngOnInit() {

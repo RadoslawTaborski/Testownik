@@ -9,7 +9,7 @@ import { SharedService } from "../shared.service";
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   isLoaded = false;
-  history:number[]=[];
+  history: number[] = [];
 
   constructor() { }
 
@@ -22,36 +22,48 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return SharedService.questions
   }
 
+  allCounter() {
+    return SharedService.allCounter;
+  }
+
+  goodCounter() {
+    return SharedService.goodCounter;
+  }
+
+  clockText() {
+    return SharedService.clockText;
+  }
+
   check(quest: number) {
-    let itWas=false;
-    for(let item of this.history){
-      if(item==quest)
-        itWas=true;
+    let itWas = false;
+    for (let item of this.history) {
+      if (item == quest)
+        itWas = true;
     }
-    if(!itWas){
-    this.history.push(quest);
-    let first = true;
-    SharedService.allCounter++;
-    let q: Question;
-    for (let item of SharedService.questions) {
-      if (item.index == quest) {
-        q = item;
+    if (!itWas) {
+      this.history.push(quest);
+      let first = true;
+      SharedService.allCounter++;
+      let q: Question;
+      for (let item of SharedService.questions) {
+        if (item.index == quest) {
+          q = item;
+        }
       }
-    }
 
-    q.result = 1;
-    SharedService.goodCounter++;
+      q.result = 1;
+      SharedService.goodCounter++;
 
-    for (let item of q.answers) {
-      if (item.value == true) {
-        item.state = 1;
+      for (let item of q.answers) {
+        if (item.value == true) {
+          item.state = 1;
+        }
+        if (item.checked != item.value && first) {
+          SharedService.goodCounter--;
+          q.result = 0;
+          first = false;
+        }
       }
-      if (item.checked != item.value && first) {
-        SharedService.goodCounter--;
-        q.result = 0;
-        first = false;
-      }
-    }
     }
   }
 
