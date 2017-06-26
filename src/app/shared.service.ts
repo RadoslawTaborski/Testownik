@@ -6,6 +6,8 @@ export class SharedService {
     static questions: Question[] = [];
     static allCounter: number = 0;
     static goodCounter: number = 0;
+    static clock: number =0;
+    static clockText: string ="";
 
     static shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
