@@ -110,11 +110,13 @@ export class HeaderComponent implements OnInit {
 
   private counterClock() {
     let tmp=SharedService.clock++;
-    let minutes= Math.floor(tmp/60);
+    let hours=Math.floor(tmp/3600);
+    var formattedNumber0 = ("0" + hours).slice(-2);
+    let minutes= Math.floor((tmp-hours*3600)/60);
     var formattedNumber1 = ("0" + minutes).slice(-2);
-    let seconds= tmp-minutes*60;
+    let seconds= tmp-minutes*60-hours*3600;
     var formattedNumber2 = ("0" + seconds).slice(-2);
-    SharedService.clockText=formattedNumber1+":"+formattedNumber2;
+    SharedService.clockText=formattedNumber0+":"+formattedNumber1+":"+formattedNumber2;
   }
 
   clock() {
