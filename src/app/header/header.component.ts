@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
 
   fileChanged($event): void {
     this.err = false;
-    this.clock();
     this.reset();
     this.files = (<HTMLInputElement>document.getElementById("file")).files;
 
@@ -111,6 +110,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clock();
   }
 
   shoulHideNavbar() {
