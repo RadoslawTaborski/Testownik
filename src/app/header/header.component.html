@@ -7,9 +7,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" *ngIf="questions().length!=0" href="#">{{appName}}  {{goodCounter()}}/{{allCounter()}}  {{clockText()}}</a>
-      <a class="navbar-brand" *ngIf="questions().length==0 && err==false" href="#">{{appName}}</a>
-      <a class="navbar-brand" *ngIf="questions().length==0 && err==true" href="#">{{appName}} -----Błędna baza-----</a>
+      <a class="navbar-brand" *ngIf="questions().length!=0" routerLink="/home">{{appName}}  {{goodCounter()}}/{{allCounter()}}  {{clockText()}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==false" routerLink="/home">{{appName}}</a>
+      <a class="navbar-brand" *ngIf="questions().length==0 && err==true" routerLink="/home">{{appName}} -----Błędna baza-----</a>
     </div>
     <div class="navbar-header">
 
