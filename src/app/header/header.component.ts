@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navStyle(url) {
-    if (url == '/home')
+    if (url == '/home' || url =='/')
       this.homeControler = true;
     else
       this.homeControler = false;
@@ -123,6 +123,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.clock();
+    
   }
 
   shoulHideNavbar() {
