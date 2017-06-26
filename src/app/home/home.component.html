@@ -20,9 +20,9 @@
 <div class="list-group container" *ngIf="isLoaded ==true && questions().length != 0">
 
     <div class="container" style="margin-top: -30px;">
-        <div class="col-md-4"><i class="fa fa-database fa-2x" aria-hidden="true"></i> Ilość Pytań w Bazie</div>
-        <div class="col-md-4" style="text-align: center"><i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> Poprawne / Złe odp</div>
-        <div class="col-md-4" style="text-align: right"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> Czas od początku</div>
+        <div class="col-md-4"><i class="fa fa-database fa-2x" aria-hidden="true"></i> Ilość Pytań w Bazie: {{questions().length}}</div>
+        <div class="col-md-4" style="text-align: center"><i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> Poprawne {{goodCounter()}}/{{allCounter()-goodCounter()}} Złe</div>
+        <div class="col-md-4" style="text-align: right"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> Czas trwania: {{clockText()}}</div>
     </div>
 
     <hr>
