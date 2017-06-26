@@ -33,3 +33,7 @@ button{
 .panel{
     transition: .2s;
 }
+
+.underline {
+    text-decoration: underline;
+}

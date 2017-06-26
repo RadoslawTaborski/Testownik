@@ -33,7 +33,7 @@
         <div class="panel-body" [class.alert-danger]="question.result==0" [class.alert-success]="question.result==1">
             <div id="{{question.index}}" *ngFor="let answer of question.answers;">
                 <div class="checkbox">
-                    <label [class.label-success]="answer.state==1">
+                    <label [class.underline]="answer.state==1">
                 <input type="checkbox" [checked]="answer.checked" (change)="answer.checked = !answer.checked">
                 <h3 class="answer">{{answer.answer}}</h3>
             </label>
