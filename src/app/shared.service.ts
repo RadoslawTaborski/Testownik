@@ -8,6 +8,7 @@ export class SharedService {
     static goodCounter: number = 0;
     static clock: number =0;
     static clockText: string ="";
+    static history: number[] = [];
 
     static shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;

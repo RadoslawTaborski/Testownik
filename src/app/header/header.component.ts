@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit {
     SharedService.goodCounter = 0;
     SharedService.clock = 0;
     SharedService.clockText="";
+    SharedService.history=[];
     this.counter = 0;
   }
 
